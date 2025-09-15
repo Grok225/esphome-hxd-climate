@@ -2,7 +2,10 @@ import esphome.codegen as cg
 import esphome.config_validation as cv
 from esphome.components import climate, uart, globals
 from esphome.const import CONF_ID
+import logging
 
+_LOGGER = logging.getLogger(__name__)
+_LOGGER.info("Loading HXD_AC_Climate component v1.0")
 # 定义命名空间和类
 hxd_ac_ns = cg.esphome_ns.namespace("hxd_ac")
 HXD_AC_Climate = hxd_ac_ns.class_("HXD_AC_Climate", climate.Climate, cg.Component)
@@ -28,3 +31,4 @@ async def to_code(config):
     cg.add(var.set_uart_bus(uart_component))
     cg.add(var.set_high_byte_global(high_byte_global))
     cg.add(var.set_low_byte_global(low_byte_global))
+
